@@ -2,9 +2,14 @@
 #include <vector>
 #include <utility>
 
+#define BRANCO 0
+#define CINZA 1
+#define PRETO 2
+
 using namespace std;
 
 typedef int Vertice;
+typedef int Cor;
 
 template<typename T>
 class Lista{
@@ -211,3 +216,8 @@ void Movimento::print(){
         cout << movimentos.getLista()[i].first << movimentos.getLista()[i].second << endl;
     }
 }
+
+//BFS
+//void Grafo::BFS (Grafo grafo, Vertice s){
+
+//}

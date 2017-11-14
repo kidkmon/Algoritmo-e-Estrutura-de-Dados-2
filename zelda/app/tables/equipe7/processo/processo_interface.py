@@ -33,6 +33,6 @@ class ProcessoInterface:
         data = self.execute_query("select * from processo where processo_id = '{}'".format(processo_id))
         return data
 
-    def get_processo_id(self):
+    def get_processo_ids(self):
         data = self.execute_query("select processo_id from processo")
         return data

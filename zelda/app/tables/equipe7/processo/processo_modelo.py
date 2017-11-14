@@ -1,5 +1,4 @@
-from ...cursor import db
-from  ..processo.processo_modelo import Processo
+from ....cursor import db
 from app import app
 
 class Processo:
@@ -25,11 +24,10 @@ class Processo:
     def get_processo_desc(self):
         return self.processo_desc
 
-    def set_processo(self, processo):
-        if processo.get_id() is not None:
     
     def deleta(self):
-        db.deleta_processo(self.get_id())
+        if self.get_id() is not None:
+            db.deleta_processo(self.get_id())
 
     def salva(self):
         if self.get_id() is None:

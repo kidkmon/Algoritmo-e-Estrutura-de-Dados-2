@@ -5,6 +5,7 @@ from ..tables.usuario.usuario_modelo import Usuario
 from ..tables.perfil.perfil_modelo import Perfil
 from ..tables.funcionalidade.funcionalidade_modelo import Funcionalidade
 from ..tables.sistema.sistema_modelo import Sistema
+from ..tables.equipe7.processo.processo_modelo import Processo
 
 class ZeldaModelo:
 
@@ -88,3 +89,13 @@ class ZeldaModelo:
             return None
 
         return funcionalidade
+
+
+    @staticmethod
+    def lista_processos():
+        result = []
+        for data in db.get_processo_ids():
+            processo = Processo(data['processo_id'])
+            result.append(processo)
+
+        return result

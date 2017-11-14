@@ -146,9 +146,9 @@ CREATE TABLE permissao (
 );
 
 DROP TABLE IF EXISTS processo;
-CREATE TABLE prcocesso (
+CREATE TABLE processo (
   processo_id int(11) AUTO_INCREMENT NOT NULL,
-  prcocesso_tipo varchar(30) NOT NULL,
+  processo_tipo varchar(30) NOT NULL,
   processo_desc varchar(100) NOT NULL,
 
   PRIMARY KEY(processo_id)

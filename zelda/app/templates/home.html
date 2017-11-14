@@ -1,0 +1,94 @@
+{% extends "header.html" %}
+
+{% block styles %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static', filename='home_style.css')}}"/>
+{% endblock %}
+
+{% block content %}
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }} </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% endwith %}
+    <div class="container">
+        <div class="row" id="home-main-div">
+            <div class="col-10 col-sm-8 col-md-6 col-lg-4 mx-auto">
+                <div class="card w-100">
+                    <div class="card-profile-image w-100">
+                        <div class="image-cropper mx-auto d-flex justify-content-center z-depth-1">
+                            <img id="user-img" class="img-responsive"
+                            {% if usuario.get_caminho_foto() %}
+                            src="{{url_for('static', filename='images/usuarios/')}}{{usuario.get_caminho_foto()}}">
+                            {% else %}
+                            src="{{url_for('static', filename='assets/user_profile.jpg')}}">
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="card-body mt-5">
+                        <h4 class="card-title">Seus Dados</h4>
+                        <ul class="list-group">
+                            <li class="list-group-item"><span><strong>Id:</strong></span> {{usuario.get_id()}}</li>
+                            <li class="list-group-item"><span><strong>Login:</strong></span> {{usuario.login}}</li>
+                            <li class="list-group-item"><span><strong>Email:</strong></span> {{usuario.email}}</li>
+                            <li class="list-group-item"><span><strong>Situação:</strong></span> {{usuario.get_status_texto()}}</li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% if usuario.get_status() == 0 %}
+                    <hr>
+                    <h4 class="mt-4">Usuário não confirmado</h4>
+                    <p>
+                        Você ainda não tem um email confirmado cadastrado para acessar as funcionalidades do Zelda.
+                    </p>
+                    <p>
+                        Deseja enviar um novo email de confirmação?
+                    </p>
+                    <form class="form" method="post" action="{{url_for('enviar_email_confirmacao')}}">
+                        {{form.hidden_tag()}}
+                        {{form.usuario_id}}
+                        <div class="md-form">
+                            {{form.email(_class='form-control')}}
+                            {{form.email.label}}
+                        </div>
+                        <button class="uea-light btn">Enviar</button>
+                    </form>
+                {% endif %}
+            </div>
+        </div>
+        {% if usuario.get_status() != 0 %}
+        <div class="row justify-content-center">
+            <div class="mx-auto col-10 col-md-11 col-lg-9 mt-4">
+                <div class="row no-gutters">
+                    {% if funcionalidades|length > 0 %}
+                        {% for func in funcionalidades %}
+                        <div class="col-12 col-sm-6 col-lg-4 mb-1">
+                            <a href="{{func.caminho}}">
+                                <div class="menu-item text-center uea-light waves-effect waves-light menu-item d-flex flex-column">
+
+                                    {% if func.get_caminho_imagem() %}
+                                        <img class="mx-auto" src="{{func.get_caminho_imagem()}}" aria-hidden="true">
+                                    {% else %}
+                                        <i class="fa fa-list-alt mx-auto" aria-hidden="true"></i>
+                                    {% endif %}
+                                    <span class="mt-auto">{{func.nome}}</span>
+                                </div>
+                            </a>                        
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                    <p class="w-100 text-center">
+                        Você não tem acesso a nenhuma funcionalidade
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endblock %}

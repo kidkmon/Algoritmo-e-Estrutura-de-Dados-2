@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{url_for('static', filename='footer.css')}}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='login_style.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-11 col-sm-10 col-md-8 col-lg-5">
+            <!-- Use esse trecho para exibir mensagens flashadas -->
+            <div>
+                {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                <ul>
+                    {% for message in messages %}
+                    <li>{{ message }} </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+            </div>
+
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">Nova Senha</h4>
+                    <p>Insira sua nova Senha.</p>
+
+                    <form class="form" action="" method="post">
+                        <!-- Necessário para funcionamento do CSRF -->
+                        {{form.hidden_tag()}}
+
+                        <div class="md-form mb-3">
+                            {{form.nova_senha(class_='form-control', id='password-input')}}
+                            <label class="" for="password-input">Nova senha</label>
+
+                        <div class="md-form mb-3">
+                            {{form.confirma_senha(class_='form-control', id='password-input')}}
+                            <label class="" for="password-input">Confirmação da nova senha</label>
+                        </div>
+
+
+                        <div class="text-center">
+                            <button id="login-button" class="btn uea-light zelda-btn-round" type="submit">Mudar Senha</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="footer" class="uea-dark">
+    <div class="container">
+        <p class="text-right mt-1">Site desenvolvido pelos alunos de MPS 2017/2</p>
+    </div>
+</div>
+
+{% endblock %}

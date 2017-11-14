@@ -1,0 +1,115 @@
+﻿#main-body {
+    /* Coloque aqui a altura do footer */
+    padding-bottom: 55px !important;
+
+    background-color: #eee;
+    height: 100%;
+    overflow: auto;
+
+    /*color: white;*/
+}
+
+html {
+    display: block;
+}
+
+#login-button {
+    width: 100%;
+    max-width: 215px;
+}
+
+#right-content .card-footer {
+    /*color: white;*/
+}
+
+#main-body input {/*
+    padding: 0 10px;
+    box-sizing: border-box;
+    border: none;
+    border-bottom: none;
+}
+
+#main-body input:focus {
+    box-shadow: none;*/
+}
+
+/******** Versão Desktop da tela ********/
+#uea-logo {
+    height: 75px;
+}
+
+.container-fluid {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+
+    /* Coloque aqui a altura do footer */
+    bottom: 55px;
+}
+
+.container-fluid > .row {
+    height: 100%;
+}
+
+#main-body {
+    /* Ajuste aqui a altura mínima para o conteúdo da versão desktop da tela */
+    min-height: 630px;
+}
+.btn-cadastrar{
+    background-color: #00C851;
+}
+
+#left-content, #right-content, #right-content > .row {
+    height: 100%;
+}
+
+#left-content .row {
+    margin-right: 15px;
+}
+
+#triangulo {
+    position: absolute;
+    right: 0;
+    width: 35px;
+}
+
+/******* Versão Mobile da tela *********/
+
+/* Para telas sm ou menor */
+@media (max-width: 767px) {
+    #uea-logo {
+        height: 35px;
+    }
+
+    #main-body {    
+        /* Ajuste aqui a altura mínima para o conteúdo da versão mobile da tela */
+        min-height: 655px;
+    }
+
+    .container-fluid {
+        position: relative;
+        width: 100%;
+        height: auto;
+    }
+
+    .container-fluid > .row {
+        height: auto;
+    }
+
+    #left-content {
+        height: 50px;
+    }
+
+    #left-content .row {
+        margin-right: -15px;
+    }
+
+    #triangulo {
+        display: none;
+    }
+
+    #right-content {
+        height: auto;
+    }
+}

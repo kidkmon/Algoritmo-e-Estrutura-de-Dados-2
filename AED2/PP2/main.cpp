@@ -6,7 +6,7 @@ using namespace std;
 class Grafo{
 private:
     float **matriz;
-    float ordem, tamanho;
+    int ordem, tamanho;
     void inicializador();
 public:
     Grafo(int);
@@ -16,15 +16,6 @@ public:
 
 int main() {
 
-    Grafo g(5);
-
-    g.inserirAresta(1,2,2);
-    g.inserirAresta(2,3,2);
-    g.inserirAresta(3,4,3);
-    g.inserirAresta(4,5,4);
-    g.inserirAresta(5,1,5);
-
-    g.print();
 
     return 0;
 }

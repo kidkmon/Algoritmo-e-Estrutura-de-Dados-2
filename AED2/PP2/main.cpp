@@ -1,37 +1,7 @@
 #include <iostream>
-#include <vector>
 #include <iomanip>
 
 using namespace std;
-
-template<typename T>
-class No{
-private:
-    T valor;
-    No<T>* prox;
-public:
-    No(){prox = NULL;}
-    No(T);
-    void setValor(T);
-    void setProx(No<T>*);
-    T getValor();
-    No<T>* getProx();
-};
-
-template<typename T>
-class Lista{
-private:
-    No<T>* prim;
-    No<T>* ult;
-public:
-    Lista ();
-    ~Lista(){}
-    No<T>* getPrim();
-    No<T>* busca(T);
-    void insere(T);
-    void remove(T);
-    void print();
-};
 
 class Grafo{
 private:
@@ -57,65 +27,6 @@ int main() {
     g.print();
 
     return 0;
-}
-
-//Início do Nó
-template<typename T>
-No<T>::No(T valor) {
-    this->valor = valor;
-    this->prox = NULL;
-}
-
-template<typename T>
-void No<T>::setValor(T valor) { this->valor = valor; }
-
-template<typename T>
-void No<T>::setProx(No* prox) { this->prox = prox; }
-
-template<typename T>
-T No<T>::getValor() { return valor; }
-
-template<typename T>
-No<T>* No<T>::getProx() { return prox; }
-
-// Início da Lista
-template <typename T>
-Lista<T>::Lista(){
-    prim = new No<T>;
-    prim->setProx(NULL);
-    ult = prim;
-}
-
-template<typename T>
-No<T>* Lista<T>::getPrim(){
-    return prim;
-}
-
-template<typename T>
-No<T>* Lista<T>::busca(T elemento){
-    No<T>* p = prim->getProx();
-    while(p != NULL && p->getValor() != elemento){
-        p = p->getProx();
-    }
-    return p;
-}
-
-template<typename T>
-void Lista<T>::insere(T elemento){
-    ult->setProx(new No<T>);
-    ult = ult->getProx();
-    ult->setProx(NULL);
-    ult->setValor(elemento);
-}
-
-template<typename T>
-void Lista<T>::print(){
-    No<T>* p = prim->getProx();
-    while(p != NULL){
-        cout << p->getValor() << " ";
-        p = p->getProx();
-    }
-    cout << endl;
 }
 
 //Início do Grafo

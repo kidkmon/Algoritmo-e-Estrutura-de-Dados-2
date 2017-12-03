@@ -132,7 +132,10 @@ void Aresta<T>::setPeso(T peso) { this->peso = peso; }
 
 template<typename T>
 class Grafo{
-
+public:
+    No<T>* vertice;
+    Aresta<T>* aresta;
+    Grafo();
 };
 
 template<typename T>
@@ -152,7 +155,24 @@ public:
     void union_function(Lista<T>*, Lista<T>*);
     No<T> find_set(Lista<T>*);
     Lista<T> makeSet(No<T>*);
+    Lista<T> mstKruskal(Grafo<T>*);
 };
+
+template<typename T>
+Lista<T> Lista::mstKruskal(Grafo* grafo) {
+    //grafo->lista de arestas = 0
+    while(grafo->vertice != NULL){
+        grafo->vertice = grafo->vertice->getProx();
+    }
+    //algoritmo de ordenacao em ordem nao decrescente de peso
+    //for
+    if(find_set(u) != find_set(v) ){
+        //grafo->lista de aresta.add
+        union_function(u,v);
+    }
+    //return grafo->lista de arestas;
+}
+
 
 template <typename T>
 Lista<T> Lista<T>::makeSet(No<T> *x) {//Funcao que cria uma lista/conjunto de um so no/representante
@@ -221,11 +241,24 @@ void Lista<T>::print(){
     cout << endl;
 }
 
+/*
+template<typename T>
 class Kruskal{
 private:
-
+    Grafo<T>* grafo;
+public:
+    void setGrafo(Grafo*);
+    Grafo<T>* getGrafo();
+    void mstKruskal(Grafo*);
 };
 
+
+template<typename T>
+void Kruskal<T>::setGrafo(Grafo* grafo) { this->grafo = grafo; }
+
+template<typename T>
+Grafo<T>* Kruskal<T>::getGrafo() { return grafo; }
+*/
 
 int main() {
     std::cout << "Hello, World!" << std::endl;

@@ -1,4 +1,4 @@
-;Kid Mendes de Oliveira Neto - 1615310011
+;aKid Mendes de Oliveira Neto - 1615310011
 ;Lorene da Silva Marques - 1615310013
 
 ;Questão 1

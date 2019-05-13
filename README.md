@@ -7,8 +7,9 @@
 Repository of codes made for University of the States of Amazonas. 
 
 ## Index
-* [AED2](https://github.com/kidkmon/UEA/tree/master/AED2)
-* [PLP](https://github.com/kidkmon/UEA/tree/master/PLP)
+* [Algoritmos e Estrutura de Dados I](https://github.com/kidkmon/UEA/tree/master/AED1)
+* [Algoritmos e Estrutura de Dados II](https://github.com/kidkmon/UEA/tree/master/AED2)
+* [Paradigmas de Linguagem de Programação](https://github.com/kidkmon/UEA/tree/master/PLP)
 
 ## Languages
 The languages used in the project were:
